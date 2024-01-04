@@ -1,6 +1,5 @@
-import { expect, test } from 'vitest'
 import { AnswerQuestionUseCase } from './answer-question'
-import { AnswersRepository } from '../../repositories/answers-repository'
+import { AnswersRepository } from '@/repositories/answers-repository'
 import { Answer } from '../entities/answer'
 
 const fakeAnswersRepository: AnswersRepository = {
@@ -14,7 +13,7 @@ test('create an Answer', async () => {
 
     const answer = await answerQuestion.execute({
         content: 'New Answer',
-        authorId: '2',
+        instructorId: '2',
         questionId: '1',
 
     })
