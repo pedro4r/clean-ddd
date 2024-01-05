@@ -79,7 +79,9 @@ export class Question extends Entity<QuestionProps> {
             ...props,
             slug: props.slug ?? Slug.createFromText(props.title),
             createdAt: new Date(),
-        })
+        },
+            id,
+        )
         return question
     }
 }
