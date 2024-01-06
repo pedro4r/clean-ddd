@@ -15,7 +15,6 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
         return question
     }
 
-
     async findBySlug(slug: string) {
         const question = this.items.find(item => item.slug.value === slug)
 
@@ -27,6 +26,12 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
     }
     async create(question: Question) {
         this.items.push(question)
+    }
+
+    async save(question: Question) {
+        const itemIndex = this.items.findIndex(item => item.id === question.id)
+
+        this.items[itemIndex] = question
     }
 
     async delete(question: Question): Promise<void> {
