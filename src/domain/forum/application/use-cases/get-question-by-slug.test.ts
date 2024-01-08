@@ -23,9 +23,10 @@ describe('Get Question By Slug', () => {
             slug: 'example-question',
         })
 
-        expect(result.isRight()).toBeTruthy()
-        expect(inMemoryQuestionsRepository.items[0]?.title).toEqual(
-            newQuestion.title,
-        )
+        expect(result.value).toMatchObject({
+            question: expect.objectContaining({
+                title: newQuestion.title,
+            }),
+        })
     })
 })
