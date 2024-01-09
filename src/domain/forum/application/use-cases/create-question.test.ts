@@ -12,7 +12,7 @@ describe('Create Question', () => {
         inMemoryQuestionAttachmentsRepository =
             new InMemoryQuestionAttachmentsRepository()
         inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
-            InMemoryQuestionAttachmentsRepository,
+            inMemoryQuestionAttachmentsRepository,
         )
         sut = new CreateQuestionUseCase(inMemoryQuestionsRepository)
     })
