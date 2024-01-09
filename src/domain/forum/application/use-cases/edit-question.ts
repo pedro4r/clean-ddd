@@ -3,7 +3,7 @@ import { NotAllowedError } from '@/domain/forum/application/use-cases/errors/not
 import { ResourceNotFoundError } from '@/domain/forum/application/use-cases/errors/resource-not-found-error'
 import { Question } from '@/domain/forum/enterprise/entities/question'
 import { QuestionsRepository } from '../repositories/questions-repositoty'
-import { QuestionAttachmentRepository } from '../repositories/question-attachments-repository'
+import { QuestionAttachmentsRepository } from '../repositories/question-attachments-repository'
 import { QuestionAttachmentList } from '../../enterprise/entities/question-attachment-list'
 import { QuestionAttachment } from '../../enterprise/entities/question-attachment'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
@@ -26,7 +26,7 @@ type EditQuestionUseCaseResponse = Either<
 export class EditQuestionUseCase {
     constructor(
         private questionsRepository: QuestionsRepository,
-        private questionAttachmentRepository: QuestionAttachmentRepository
+        private QuestionAttachmentsRepository: QuestionAttachmentsRepository
     ) {
 
     }
@@ -49,7 +49,7 @@ export class EditQuestionUseCase {
         }
 
         const currentQuestionAttachments =
-            await this.questionAttachmentRepository.findManyByQuestionId(questionId)
+            await this.QuestionAttachmentsRepository.findManyByQuestionId(questionId)
 
         const questionAttachmentList =
             new QuestionAttachmentList(currentQuestionAttachments)
