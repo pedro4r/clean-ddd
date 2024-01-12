@@ -4,6 +4,7 @@ import { AggregateRoot } from '../entities/aggregate-root'
 import { DomainEvents } from '@/core/events/domain-events'
 import { vi } from 'vitest'
 
+// This is the event we want to register
 class CustomAggregateCreated implements DomainEvent {
     public ocurredAt: Date
     private aggregate: CustomAggregate // eslint-disable-line
@@ -18,12 +19,11 @@ class CustomAggregateCreated implements DomainEvent {
     }
 }
 
+
 class CustomAggregate extends AggregateRoot<null> {
     static create() {
         const aggregate = new CustomAggregate(null)
-
         aggregate.addDomainEvent(new CustomAggregateCreated(aggregate))
-
         return aggregate
     }
 }
