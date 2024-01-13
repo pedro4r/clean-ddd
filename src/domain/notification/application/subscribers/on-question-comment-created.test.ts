@@ -47,7 +47,7 @@ describe('On Question Comment Created', () => {
         new OnQuestionCommentCreated(inMemoryQuestionsRepository, sendNotificationUseCase)
     })
 
-    it('should  send a notification when an answer is created', async () => {
+    it('should  send a notification when a comment in question is created', async () => {
         const question = makeQuestion()
         const questionComment = makeQuestionComment({ questionId: question.id })
 
