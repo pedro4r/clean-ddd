@@ -27,7 +27,7 @@ export class OnQuestionCommentCreated implements EventHandler {
         if (question) {
             await this.sendNotification.execute({
                 recipientId: question.authorId.toString(),
-                title: `New comment at 
+                title: `New comment in 
                 "${question.title.substring(0, 40).concat('...')}"`,
                 content: questionComment.content,
             })
